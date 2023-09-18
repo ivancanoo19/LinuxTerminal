@@ -1,5 +1,11 @@
 #!/bin/bash
 
+misComandos=(
+    "infosis"
+    "buscar"
+    "salir"
+)
+
 function infosis_C(){
     ./Comandos/infosis.sh
 }
@@ -7,13 +13,17 @@ function infosis_C(){
 function buscar_C(){
     ./Comandos/buscar.sh
 }
-opcion=a
+comando="a  "
+binarios="/usr/bin/"
 
-while [ $opcion != salir ]; do
+
+while ! [[ $comando =~ salir ]]; do
+    echo $USER : $PWD
     printf "> "
-    read opcion
+    read comando
 
-    case $opcion in
+    if grep -q "^$comando" <<< "${misComandos[@]}"; then
+        case $comando in
         infosis)
             infosis_C;;
 
@@ -28,11 +38,14 @@ while [ $opcion != salir ]; do
             echo Opcion no valida, intenta de nuevo
             echo;;
 
-    esac
+        esac
+    
+    else
+        $comando
+        
+    fi
 
  done
-
-
 
 echo
 echo
