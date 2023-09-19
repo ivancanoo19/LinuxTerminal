@@ -1,10 +1,10 @@
 #!/bin/bash
 
+echo
+echo Hora del sistema:
+grep rtc_time /proc/driver/rtc
 
-printf "> "
-read op
+echo Fecha del sistema:
+grep rtc_date /proc/driver/rtc
 
-if [ $op == fecha ]; then
-    echo hola
-fi
-
+echo
