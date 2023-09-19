@@ -1,36 +1,37 @@
 #!/bin/bash
 
 misComandos=(
+    "ayuda"
+    "fecha"
     "infosis"
     "buscar"
+    "creditos"
+    "juego"
     "salir"
 )
 
-function infosis_C(){
-    ./Comandos/infosis.sh
-}
-
-function buscar_C(){
-    ./Comandos/buscar.sh
-}
 comando="a  "
-binarios="/usr/bin/"
 
 
 while ! [[ $comando =~ salir ]]; do
-    echo $USER : $PWD
+    #echo $USER : $PWD
+    printf "\033[31m$USER\033[0m : \033[35m$PWD\033[0m"
+    echo
     printf "> "
     read comando
 
-    if grep -q "^$comando" <<< "${misComandos[@]}"; then
+    if grep -q "$comando" <<< "${misComandos[@]}"; then
         case $comando in
+        ayuda)
+            ./Comandos/ayuda.sh;;
         infosis)
-            infosis_C;;
-
+            ./Comandos/infosis.sh;;
+        fecha)
+            ./Comandos/fecha.sh;;
         buscar)
-            buscar_C;;
-
-
+            ./Comandos/buscar.sh;;
+        juego)
+            ./Comandos/juego.sh;;
         salir)
             echo Vuelva pronto;;
 
