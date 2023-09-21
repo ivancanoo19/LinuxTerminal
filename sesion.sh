@@ -1,11 +1,28 @@
 #!/bin/bash
 
-echo "BIENVENIDO ---- TERMINAL LINUX"
+echo
+echo
+
+title(){
+    echo -e "\e[36m=================================" 
+    echo -e "    __    ____  ___________   __"
+    echo -e "   / /   / __ \/ ____/  _/ | / /"
+    echo -e "  / /   / / / / / __ / //  |/ / "
+    echo -e " / /___/ /_/ / /_/ // // /|  /  "
+    echo -e "/_____/\____/\____/___/_/ |_/   "
+
+    echo                            
+    echo -e "=================================\e[0m"
+}
+
 
 intentosMaximos=3
 intentos=0
 
 while [ "$opcion" != 3 ]; do
+    title
+    echo
+    echo
     echo "Selecciona una opción:"
     echo "1. Iniciar sesión"
     echo "2. Registrarse"
