@@ -22,22 +22,16 @@ while [ "$opcion" != 3 ]; do
         # Si se redirecciona algo al directorio "basura"
         # quiere decir que el usuario existe en el sistema.
         if getent passwd "$username" > /dev/null; then
-            while [ $intentos -lt $intentosMaximos ]; do
-                su "$username"
-                
-                # "$?" es una variable que almacena el valor de retorno del comando
-                # más reciente ejecutado. "su" devuelve cero si se inicio sesion exitosamente
-                if [ $? -eq 0 ]; then
-                    echo INICIO DE SESION EXITOSO
-                else
-                    echo
-                    echo Upssss, contraseña incorrecta.
-                    intentos=$((intentos+1))
-                fi
-            done
+            echo -n Ingresa tu contraseña:
+            read password
+            login=true
+            if ! echo "$password" | su "$username" -c 'echo " "' 2> /dev/null; then
+                echo Upsss, contraseña incorrecta
+                login=false
+            fi
 
-            if [ $intentos -eq $intentosMaximos ]; then
-                echo "Has alcanzado el número máximo de intentos. Bloqueando el acceso."
+            if $login; then
+                ./main.sh
             fi
         else
             echo "El usuario $username no existe en el sistema. Regístrate o haz algo, ¡yo qué sé!"
