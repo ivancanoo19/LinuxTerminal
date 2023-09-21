@@ -24,7 +24,9 @@ while [ "$opcion" != 3 ]; do
         if getent passwd "$username" > /dev/null; then
             while [ $intentos -lt $intentosMaximos ]; do
                 su "$username"
-
+                
+                # "$?" es una variable que almacena el valor de retorno del comando
+                # más reciente ejecutado. "su" devuelve cero si se inicio sesion exitosamente
                 if [ $? -eq 0 ]; then
                     echo INICIO DE SESION EXITOSO
                 else
@@ -43,7 +45,6 @@ while [ "$opcion" != 3 ]; do
         intentos=0
         ;;
     2)
-        # Aquí puedes agregar la lógica para registrar un nuevo usuario en el sistema.
         echo "Función de registro no implementada todavía."
         ;;
     3)
