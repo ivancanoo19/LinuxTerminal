@@ -1,8 +1,109 @@
 #!/bin/bash
 
+intentos_0(){
+    echo "   ================"
+    echo "   |           |"
+    echo "   |           |"
+    echo "   |        \(⁠>⁠▂⁠<⁠)/"
+    echo "   |         \| |/"
+    echo "   |          | |"
+    echo "   |         _/ \_"
+    echo "   |"
+    echo "   |"
+    echo "======="
+}
+
+intentos_1(){
+    echo "   ================"
+    echo "   |           |"
+    echo "   |           |"
+    echo "   |        \(⁠>⁠▂⁠<⁠)/"
+    echo "   |         \| |/"
+    echo "   |          | |"
+    echo "   |         _/"
+    echo "   |"
+    echo "   |"
+    echo "======="
+}
+
+intentos_2(){
+    echo "   ================"
+    echo "   |           |"
+    echo "   |           |"
+    echo "   |        \(⁠>⁠▂⁠<⁠)/"
+    echo "   |         \| |/"
+    echo "   |          | |"
+    echo "   |         "
+    echo "   |"
+    echo "   |"
+    echo "======="
+}
+
+intentos_3(){
+    echo "   ================"
+    echo "   |           |"
+    echo "   |           |"
+    echo "   |        \(⁠>⁠▂⁠<⁠)"
+    echo "   |         \| |"
+    echo "   |          | |"
+    echo "   |         "
+    echo "   |"
+    echo "   |"
+    echo "======="
+}
+
+intentos_4(){
+    echo "   ================"
+    echo "   |           |"
+    echo "   |           |"
+    echo "   |         (⁠>⁠▂⁠<⁠)"
+    echo "   |          | |"
+    echo "   |          | |"
+    echo "   |          "
+    echo "   |"
+    echo "   |"
+    echo "======="
+}
+
+intentos_5(){
+    echo "   ================"
+    echo "   |           |"
+    echo "   |           |"
+    echo "   |         (⁠>⁠▂⁠<⁠)"
+    echo "   |         "
+    echo "   |         "
+    echo "   |         "
+    echo "   |"
+    echo "   |"
+    echo "======="
+}
+
+intentos_6(){
+    echo "   ================"
+    echo "   |         "
+    echo "   |         "
+    echo "   |         "
+    echo "   |         "
+    echo "   |         "
+    echo "   |         "
+    echo "   |"
+    echo "   |"
+    echo "======="
+}
+
+# Define un conjunto de palabras
+palabras=("manzana" "pera" "uva" "naranja" "platano" "sandia" "cereza" "fresa" "kiwi" "melocoton"
+          "londres" "inglaterra" "mexico" "argentina" "uruguay" "españa" "madrid" "barcelona" "andorra" "canada"
+          "messi" "ronaldo" "ronaldinho" "cristiano" "xavi" "iniesta" "modric" "mbappe" "haaland" "puyol"
+          "debian" "fedora" "gentoo" "ubuntu" "mint" "redhat" "centos" "linux" "arch" "kali"
+          "java" "c" "c++" "python" "javascript" "php" "ruby" "c#" "baisc" "fortran")
+
+# Selecciona una palabra al azar del conjunto
+indice=$(($RANDOM %50))
+palabra="${palabras[$indice]}"
+
 intentos=6
 arr=()
-palabra="cereza"
 n=${#palabra}
 adivinado=false  # Variable para rastrear si la palabra ha sido adivinada
 
@@ -11,14 +112,36 @@ for ((i = 0; i < n; i++)); do
     arr[$i]="__"
 done
 
-echo "${arr[*]}"
+echo
+echo
+echo "Palabra a adivinar: "${arr[@]}""
 
 while [ $intentos -gt 0 ]; do
-    printf "Introduce una letra: "
+    echo
+    echo
+
+    if [ $intentos -eq 6 ]; then
+        intentos_6
+    elif [ $intentos -eq 5 ]; then
+        intentos_5
+    elif [ $intentos -eq 4 ]; then
+        intentos_4
+    elif [ $intentos -eq 3 ]; then
+        intentos_3
+    elif [ $intentos -eq 2 ]; then
+        intentos_2
+    else [ $intentos -eq 1 ]
+        intentos_1    
+    fi
+
+    echo
+    echo
+
+    echo -n -e "\e[34mIntroduce una letra: \e[0m"
     read letra
 
     while [ ${#letra} != 1 ]; do
-        printf "Por favor, introduce solamente una letra: "
+        echo -n -e  "\e[35mPor favor, introduce solamente una letra: \e[0m"
         read letra
     done
 
@@ -34,7 +157,9 @@ while [ $intentos -gt 0 ]; do
 
     if [ "$encontrado" == "false" ]; then
         intentos=$((intentos - 1))
-        echo "Letra incorrecta. Intentos restantes: $intentos"
+        echo -e "\e[31mLetra incorrecta. Intentos restantes: $intentos\e[0m"
+    else 
+        echo -e "\e[31m¡Letra correcta!. Intentos restantes: $intentos\e[0m"
     fi
 
     resultado=""
@@ -42,7 +167,8 @@ while [ $intentos -gt 0 ]; do
         resultado="${resultado}${char} "
     done
 
-    echo $resultado
+    echo
+    echo "Palabra a adivinar: $resultado"
 
     adivinado=true
 
@@ -62,6 +188,7 @@ if [ "$adivinado" == "true" ]; then
     echo "¡Felicidades! Adivinaste la palabra: $palabra"
 else
     echo "Agotaste tus intentos. La palabra era: $palabra"
+    intentos_0
 fi
 
 echo
