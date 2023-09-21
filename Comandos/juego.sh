@@ -1,30 +1,68 @@
 #!/bin/bash
 
-printf "Introduce un caracter: "
-read letra
-
-while [ ${#letra} != 1 ]; do
-    printf "Tramposo! Introduce solamente una letra: "
-    read letra
-done
-
+intentos=6
+arr=()
 palabra="cereza"
-longitud=${#palabra}
-i=0
+n=${#palabra}
+adivinado=false  # Variable para rastrear si la palabra ha sido adivinada
 
-while [ $i -lt $longitud ]; do
-    caracter="${palabra:$i:1}"
-    if [ "$caracter" == "$letra" ]; then
-        arr[$i]=$letra
-    else
-        arr[$i]="__"
+# Inicializa el array con guiones bajos
+for ((i = 0; i < n; i++)); do
+    arr[$i]="__"
+done
+
+echo "${arr[*]}"
+
+while [ $intentos -gt 0 ]; do
+    printf "Introduce una letra: "
+    read letra
+
+    while [ ${#letra} != 1 ]; do
+        printf "Por favor, introduce solamente una letra: "
+        read letra
+    done
+
+    encontrado=false
+
+    for ((i = 0; i < n; i++)); do
+        caracter="${palabra:$i:1}"
+        if [ "$caracter" == "$letra" ]; then
+            arr[$i]=$letra
+            encontrado=true
+        fi
+    done
+
+    if [ "$encontrado" == "false" ]; then
+        intentos=$((intentos - 1))
+        echo "Letra incorrecta. Intentos restantes: $intentos"
     fi
-    i=$((i + 1))
+
+    resultado=""
+    for char in "${arr[@]}"; do
+        resultado="${resultado}${char} "
+    done
+
+    echo $resultado
+
+    adivinado=true
+
+    for char in "${arr[@]}"; do
+        if [ "$char" == "__" ]; then
+            adivinado=false
+            break
+        fi
+    done
+
+    if [ "$adivinado" == "true" ]; then
+        break
+    fi
 done
 
-resultado=""
-for elemento in "${arr[@]}"; do
-    resultado="${resultado}${elemento} "
-done
+if [ "$adivinado" == "true" ]; then
+    echo "¡Felicidades! Adivinaste la palabra: $palabra"
+else
+    echo "Agotaste tus intentos. La palabra era: $palabra"
+fi
 
-echo $resultado
+echo
+echo
