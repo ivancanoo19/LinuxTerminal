@@ -9,6 +9,7 @@ misComandos=(
     "buscar"
     "creditos"
     "juego"
+    "musica"
     "salir"
 )
 
@@ -51,6 +52,8 @@ while ! [[ $comando =~ salir ]]; do
             ./Comandos/buscar.sh;;
         juego)
             ./Comandos/juego.sh;;
+        musica)
+            ./Comandos/music.sh;;
         salir)
             echo Vuelva pronto;;
 
