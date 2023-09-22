@@ -1,5 +1,7 @@
 #!/bin/bash
 
+username=$1
+
 misComandos=(
     "ayuda"
     "fecha"
@@ -31,7 +33,7 @@ title
 
 while ! [[ $comando =~ salir ]]; do
     #echo $USER : $PWD
-    printf "\033[31m$USER\033[0m : \033[35m$PWD\033[0m"
+    printf "\033[31m$username\033[0m : \033[35m$PWD\033[0m"
     echo
     printf "> "
     read comando
