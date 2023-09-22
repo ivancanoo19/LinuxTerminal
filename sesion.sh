@@ -48,7 +48,7 @@ while [ "$opcion" != 3 ]; do
             fi
 
             if $login; then
-                ./main.sh
+                ./main.sh $username
             fi
         else
             echo "El usuario $username no existe en el sistema. Regístrate o haz algo, ¡yo qué sé!"
