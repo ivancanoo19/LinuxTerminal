@@ -16,9 +16,6 @@ title(){
 }
 
 
-intentosMaximos=3
-intentos=0
-
 while [ "$opcion" != 2 ]; do
     title
     echo
@@ -53,7 +50,6 @@ while [ "$opcion" != 2 ]; do
         else
             echo "El usuario $username no existe en el sistema. Regístrate o haz algo, ¡yo qué sé!"
         fi
-        intentos=0
         ;;
     2)
         echo "Saliendo..."
