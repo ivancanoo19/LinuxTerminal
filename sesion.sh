@@ -19,14 +19,14 @@ title(){
 intentosMaximos=3
 intentos=0
 
-while [ "$opcion" != 3 ]; do
+while [ "$opcion" != 2 ]; do
     title
     echo
     echo
     echo "Selecciona una opción:"
     echo "1. Iniciar sesión"
-    echo "2. Registrarse"
-    echo "3. Salir"
+    echo "2. Salir"
+    echo -n "Opcion: "
 
     read opcion
 
@@ -40,7 +40,7 @@ while [ "$opcion" != 3 ]; do
         # quiere decir que el usuario existe en el sistema.
         if getent passwd "$username" > /dev/null; then
             echo -n Ingresa tu contraseña:
-            read password
+            read -s password #Bandera -s para ocultar la entrada
             login=true
             if ! echo "$password" | su "$username" -c 'echo " "' 2> /dev/null; then
                 echo Upsss, contraseña incorrecta
@@ -56,9 +56,6 @@ while [ "$opcion" != 3 ]; do
         intentos=0
         ;;
     2)
-        echo "Función de registro no implementada todavía."
-        ;;
-    3)
         echo "Saliendo..."
         ;;
     *)
