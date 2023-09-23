@@ -25,7 +25,7 @@ echo
 echo "     COMANDO      |    DESCRIPCIÓN    "
 echo " ayuda            |  Muestra la lista de comandos disponibles en la terminal"
 echo " infosis          |  Muestra información básica del sistema operativo"
-echo " creditos         |  Creditos al programador :D"
+echo " buscar           |  Busca un archivo en el sistema"
 echo " juego            |  Diversion..."
 echo " musica           |  Reproductor de musiquita"
 echo " salir            |  Salir del programa"
