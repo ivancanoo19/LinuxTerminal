@@ -1,5 +1,22 @@
 #!/bin/bash
 
+title(){
+    echo
+    echo -e "\e[36m======================================================="
+    echo -e "    __  ___                "     
+    echo -e "   /  |/  /_  _______(_)________ _  "
+    echo -e "  / /|_/ / / / / ___/ / ___/ __  /  "
+    echo -e " / /  / / /_/ (__  ) / /__/ /_/ / "
+    echo -e "/_/  /_/\__,_/____/_/\___/\__,_/  "
+                                                                                                                                 
+    echo
+    echo -e "======================================================="   
+    echo
+    echo
+}
+
+
+title
 rutaPredeterminada="../playlist/"
 playlist="userPlaylist.m3u"  # Define la variable playlist aquí
 
@@ -145,4 +162,6 @@ else
     fi
 fi
 
+echo
+echo -e "\e[0m"
 echo

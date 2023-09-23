@@ -14,7 +14,6 @@ misComandos=(
     "fecha"
     "infosis"
     "buscar"
-    "creditos"
     "juego"
     "musica"
     "salir"
