@@ -1,5 +1,20 @@
 #!/bin/bash
 
+title(){
+    echo
+    echo -e "\e[36m======================================================="
+    echo -e "    ___    __                              __    "
+    echo -e "   /   |  / /_  ____   ___  ___  ____  ___/ /__  "
+    echo -e "  / /| | / __ \/ __ \/ ___/ ___/ __  / __  / __ \ "
+    echo -e " / ___ |/ / / / /_/ / /  / /__/ /_/ / /_/ / /_/ / "
+    echo -e "/_/  |_/_/ /_/\____/_/   \___/\__,_/\__,_/\____/ "                                                                                               
+    echo
+    echo -e "=======================================================\e[0m"  
+  
+    echo
+    echo
+}
+
 intentos_0(){
     echo "   ================"
     echo "   |           |"
@@ -98,7 +113,7 @@ palabras=("manzana" "pera" "uva" "naranja" "platano" "sandia" "cereza" "fresa" "
           "debian" "fedora" "gentoo" "ubuntu" "mint" "redhat" "centos" "linux" "arch" "kali"
           "java" "c" "c++" "python" "javascript" "php" "ruby" "c#" "baisc" "fortran")
 
-# Selecciona una palabra al azar del conjunto
+# Selecciona una palabra al azar del arreglo
 indice=$(($RANDOM %50))
 palabra="${palabras[$indice]}"
 
@@ -112,6 +127,8 @@ for ((i = 0; i < n; i++)); do
     arr[$i]="__"
 done
 
+
+title
 echo
 echo
 echo "Palabra a adivinar: "${arr[@]}""
