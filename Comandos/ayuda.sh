@@ -9,7 +9,7 @@ title(){
     echo -e " / ___ |/ / /_/ / /_/ / ___ |"
     echo -e "/_/  |_/_/\____/_____/_/  |_|"
     echo
-    echo -e "==============================\e[0m"  
+    echo -e "=============================="  
   
     echo
     echo
@@ -33,4 +33,4 @@ echo " salir            |  Salir del programa"
 
 
 echo
-echo
+echo -e "\e[0m"
