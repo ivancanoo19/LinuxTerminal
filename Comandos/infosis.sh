@@ -5,18 +5,18 @@ ram=0
 
 echo
 echo Sistema operativo:
-cat /etc/issue
+cat /etc/issue | awk '{print $1, $2, $3}'
 
 echo Arquitectura:
 arch
-
-    #aux=$(cat /proc/meminfo | head -n 1 | grep [0-9])
-    #echo $aux
 
 ram=$(cat /proc/meminfo | head -n 1)
 printf "\nRAM " $ram
 echo $ram
 
+echo
+echo Procesador:
+cat /proc/cpuinfo | grep "model name" | head -n 1 | cut -d ":" -f 2-
 
 echo
 echo
