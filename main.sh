@@ -2,6 +2,13 @@
 
 username=$1
 
+# Función que se ejecuta cuando se recibe Ctrl+C o Ctrl+Z
+function malo(){
+    echo
+    echo "EEEEeeeeEeeEeeEE A DONDE CREES QUE VAS? Usa el comando salir o escribe ayuda."
+    printf "> "
+}
+
 misComandos=(
     "ayuda"
     "fecha"
@@ -34,6 +41,8 @@ title
 
 while ! [[ $comando =~ salir ]]; do
     #echo $USER : $PWD
+    trap 'malo' SIGTSTP
+    trap 'malo' SIGINT
     printf "\033[31m$username\033[0m : \033[35m$PWD\033[0m"
     echo
     printf "> "
