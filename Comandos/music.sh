@@ -17,7 +17,7 @@ title(){
 
 
 title
-rutaPredeterminada="../playlist/"
+rutaPredeterminada="playlist/"
 playlist="userPlaylist.m3u"  # Define la variable playlist aquí
 
 controles(){
@@ -109,7 +109,7 @@ if [ $? -eq 0 ]; then
     opcion1=9
 
 
-    while [ $opcion1 -ne 3 ]; do
+    while [ $opcion1 != 3 ]; do
         echo "Menu principal: "
         echo "1. Reproducir playlist predeterminado de la terminal (o sea mío jeje)."
         echo "2. Reproducir playlist indicando la ruta específica."
