@@ -2,6 +2,9 @@
 
 username=$1
 
+trap 'malo' SIGTSTP
+trap 'malo' SIGINT
+
 # Función que se ejecuta cuando se recibe Ctrl+C o Ctrl+Z
 function malo(){
     echo
@@ -40,8 +43,6 @@ title
 
 while ! [[ $comando =~ salir ]]; do
     #echo $USER : $PWD
-    trap 'malo' SIGTSTP
-    trap 'malo' SIGINT
     printf "\033[31m$username\033[0m : \033[35m$PWD\033[0m"
     echo
     printf "> "

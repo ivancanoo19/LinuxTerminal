@@ -1,5 +1,14 @@
 #!/bin/bash
 
+function malo(){
+    echo
+    echo "EEEEeeeeEeeEeeEE A DONDE CREES QUE VAS? Usa el comando salir o escribe ayuda."
+    printf "> "
+}
+
+trap 'malo' SIGTSTP
+trap 'malo' SIGINT
+
 echo
 echo
 
